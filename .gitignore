@@ -1,5 +1,9 @@
 .gradle
 /build/
+out
+reboot.bat
+setting.ini
+UKiller_new.jar
 
 # Ignore Gradle GUI config
 gradle-app.setting

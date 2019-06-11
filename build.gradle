@@ -19,6 +19,7 @@ dependencies {
 
     // The following dependencies will become ear libs and will
     // be placed in a dir configured via the libDirName property
+
     // earlib group: 'log4j', name: 'log4j'
     testCompile group: 'junit', name: 'junit', version: '4.12'
     // https://mvnrepository.com/artifact/org.ini4j/ini4j
@@ -29,6 +30,7 @@ dependencies {
     compile group: 'org.json', name: 'json', version: '20180813'
     // https://mvnrepository.com/artifact/commons-io/commons-io
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    compile file('lib/jshortcut-0.4-oberzalek.jar')
 }
 
 ear {

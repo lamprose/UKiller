@@ -1,11 +1,13 @@
+package Main;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
+import Thread.Scan;
+
 public class JFrameMain extends JFrame {
-    private JPanel leftPanel;
-    private JPanel rightPanel;
     private JMenuBar menubar;
     private JMenuItem settingsMenu, aboutMenu;
     private JPanel topPanel,mainPanel;
@@ -28,12 +30,12 @@ public class JFrameMain extends JFrame {
         setLocation(400,80);
         setResizable(false);
         setVisible(true);
-        CheckUpdate();
+        checkUpdate();
         addWindowListener(new WindowAdapter() {
             @Override
             //
             public void windowClosing(WindowEvent e) {
-                if(set%2==1)
+                if((set>>1)%2==1)
                     return;
                 Object[] options ={ "最小化托盘(默认)", "退出" };  //自定义按钮上的文字
                 int ret= JOptionPane.showOptionDialog(JFrameMain.this,"确定关闭？","提醒",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,options,options[0]);
@@ -41,7 +43,7 @@ public class JFrameMain extends JFrame {
                     System.exit(0);
                 else{//最小化托盘
                     trayIcon.displayMessage("通知：", "程序最小化到系统托盘", TrayIcon.MessageType.INFO);
-                    set=set^1;
+                    set=set^2;
                     settings.setSettings(set);
                     settings.saveSettings(set);
                     return;
@@ -222,7 +224,8 @@ public class JFrameMain extends JFrame {
         scanThread.start();
     }
 
-    private void CheckUpdate(){
+    private void checkUpdate(){
         new Update(JFrameMain.this).CheckUpdate();
     }
+
 }

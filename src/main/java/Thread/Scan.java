@@ -1,3 +1,5 @@
+package Thread;
+
 import javax.swing.*;
 import java.io.*;
 
@@ -59,7 +61,7 @@ public class Scan implements Runnable {
                     }else{
                         haveVirus=true;
                         virusNum[checkVirusType(virusPath[i])]++;
-                        if((setting>>1)%2==1){
+                        if((setting>>2)%2==1){
                             File virusFile=new File(diskPath+File.separator+virusPath[i]);
                             if(virusFile.exists()&&virusFile.isFile()){
                                 virusFile.delete();
@@ -80,7 +82,7 @@ public class Scan implements Runnable {
             if(deleteVirus){
                 logComponents.append("病毒调用文件已自动删除！\n");
             }
-            if((setting>>1)%2==1){
+            if((setting>>2)%2==1&&((setting>>3)%2==1)){
                 autoRunFile.delete();
                 if(!autoRunFile.exists())
                     logComponents.append("autorun.inf已经自动删除！\n\n\n");

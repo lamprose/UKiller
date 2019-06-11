@@ -1,7 +1,11 @@
+package Dialog;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import Main.JFrameMain;
 
 public class UpdateDialog extends JDialog {
 

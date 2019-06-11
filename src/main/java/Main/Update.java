@@ -1,4 +1,5 @@
-import org.apache.commons.io.FileUtils;
+package Main;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
@@ -6,10 +7,9 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.json.JSONObject;
 
-import java.awt.*;
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import Dialog.DownloadDialog;
+import Dialog.UpdateDialog;
 
 public class Update {
     String uri="https://api.github.com/repos/lamprose/UKiller/releases/latest";
@@ -54,13 +54,14 @@ public class Update {
             JSONObject release = new JSONObject(updateStr);
 
             // Get current version
-            String version = "1.2";
+            String version = "1.3";
 
             String latestVersion = release.getString("tag_name");
             boolean isPreRelease = release.getBoolean("prerelease");
             if (!isPreRelease && version.compareToIgnoreCase(latestVersion) >= 0) {
                 //TODO: Your version is ahead of or same as the latest.
                 System.out.println("已是最新版");
+                new UpdateDialog(main,true,"已是最新版,无需更新");
             } else {
                 String updateLog=release.getString("body");
                 new UpdateDialog(main,true,updateLog);

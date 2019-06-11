@@ -1,10 +1,13 @@
-import javax.swing.*;
+package Main;
+
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import Thread.Scan;
 
 public class WatchDisk {
 
@@ -85,7 +88,7 @@ class ResFileByWatchDisk {
     private File[] dirs;
     public File[] newDisk=null;
 
-    public ResFileByWatchDisk(File[] OldDisk,JFrameMain Main) {
+    public ResFileByWatchDisk(File[] OldDisk, JFrameMain Main) {
         oldDisk = OldDisk;
         main=Main;
         flag=false;
@@ -130,12 +133,12 @@ class ResFileByWatchDisk {
             newDisk=newList.toArray(new File[newList.size()]);
             for (int i=0;i<newDisk.length;i++){
                 try {
-                    if((main.set>>2)%2==1){
+                    if((main.set>>5)%2==1){
                         File a=new File(newDisk[i].getPath()+File.separator+"autorun.inf");
                         if(a.exists())
                             Runtime.getRuntime().exec("C:\\WINDOWS\\system32\\notepad.exe "+a.getPath());
                     }
-                    if((main.set>>3)%2==1){
+                    if((main.set>>4)%2==1){
                         Runtime.getRuntime().exec("C:\\WINDOWS\\explorer.exe "+newDisk[i].getPath());
                     }
                 } catch (IOException e1) {
@@ -153,13 +156,13 @@ class ResFileByWatchDisk {
 class autoScan implements Runnable{
     private File disk;
     private JFrameMain main;
-    public autoScan(File Disk,JFrameMain Main){
+    public autoScan(File Disk, JFrameMain Main){
         disk=Disk;
         main=Main;
     }
     @Override
     public void run() {
-        if((main.set>>5)%2==1){
+        if((main.set>>6)%2==1){
             main.trayIcon.displayMessage("通知","发现新磁盘"+disk, TrayIcon.MessageType.INFO);
             new Thread(new Scan(disk.getPath(),main.log,main.set)).start();
         }

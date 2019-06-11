@@ -1,13 +1,14 @@
+package Dialog;
+
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
+
 import Thread.Download;
-import Dialog.CompleteDialog;
+import Main.JFrameMain;
 
 public class DownloadDialog extends JDialog {
 

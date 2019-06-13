@@ -17,8 +17,8 @@ public class UpdateDialog extends JDialog {
         updateLog=UpdateLog;
         main=owner;
         init();
-        setSize(200,250);
-        setLocation(owner.getX()+200,owner.getY()+175);
+        setSize(200,270);
+        setLocation(owner.getX()+200,owner.getY()+165);
         setVisible(true);
     }
 

@@ -54,13 +54,13 @@ public class Update {
             JSONObject release = new JSONObject(updateStr);
 
             // Get current version
-            String version = "1.3";
+            String version = "1.4";
 
             String latestVersion = release.getString("tag_name");
             boolean isPreRelease = release.getBoolean("prerelease");
             if (!isPreRelease && version.compareToIgnoreCase(latestVersion) >= 0) {
-                //TODO: Your version is ahead of or same as the latest.
-                System.out.println("已是最新版");
+                //Your version is ahead of or same as the latest.
+                //System.out.println("已是最新版");
                 new UpdateDialog(main,true,"已是最新版,无需更新");
             } else {
                 String updateLog=release.getString("body");

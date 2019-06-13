@@ -51,15 +51,15 @@ public class DownloadDialog extends JDialog {
                         FileWriter fileWriter = new FileWriter(batFile,false);
                         fileWriter.write("@echo off\n" +
                                 ":circle\n" +
-                                "tasklist|find /i \"qq.exe\" || goto start\n" +
-                                "taskkill /im qq.exe /f\n" +
+                                "tasklist|find /i \"java.exe\" || goto start\n" +
+                                "taskkill /im java.exe /f\n" +
                                 "ping 127.1 -n 3 >nul 2>nul\n" +
                                 "goto circle\n" +
                                 "\n" +
                                 ":start\n" +
                                 "del /f /s /q UKiller.jar\n" +
-                                "ren UKiller_new.jar Ukiller.jar\n"+
-                                "del %0");
+                                "ren UKiller_new.jar UKiller.jar\n"+
+                                "javaw -jar UKiller.jar|del %0\n");
                         fileWriter.close();
                     }catch (Exception ex){
                         ex.printStackTrace();
